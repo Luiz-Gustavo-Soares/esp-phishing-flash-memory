@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include <ArduinoJson.h>
-#include "Arquivomaneger.h"
+#include "Arquivomaneger.cpp"
 using namespace std;
 
 

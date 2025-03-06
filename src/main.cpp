@@ -2,7 +2,7 @@
 #include <WiFiMulti.h>
 #include <DNSServer.h>
 #include <WebServer.h>
-#include "Victims.h"
+#include "Victims.cpp"
 
 
 // User configuration
