@@ -30,6 +30,7 @@ public:
     }
 
     void clearVictims(){
+        doc["victims"].to<JsonArray>();
         arquivo->clearFile();
     }
 
