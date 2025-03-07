@@ -30,7 +30,6 @@ public:
 
         String out;
         serializeJson(doc, out);
-        Serial.println(out);
         arquivo->writeFile(out);
     }
 
@@ -42,7 +41,6 @@ public:
 
         String out;
         serializeJson(doc, out);
-        Serial.println(out);
         arquivo->writeFile(out);
     }
 

@@ -25,11 +25,7 @@ public:
             Serial.println("Erro ao abrir o arquivo para leitura");
             return "";
         }
-        Serial.println("Conteúdo do arquivo:");
         v = file.readString();
-        // while (file.available()) {
-        //     v = v + file.readStringUntil('\n') + '\n';
-        // }
         file.close();
         return v;
     }
@@ -42,7 +38,6 @@ public:
         }
         file.print(message);
         file.close();
-        Serial.println("Escrita concluída!");
     }
     
     void clearFile() {
@@ -53,6 +48,5 @@ public:
         }
         file.print("");
         file.close();
-        Serial.println("Limpeza concluída!");
     }
 };
