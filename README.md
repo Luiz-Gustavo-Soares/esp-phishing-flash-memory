@@ -1,47 +1,55 @@
-# Captive Portal com ESP32
+# Captive Portal ESP32
 
-## Introdução
-Este projeto implementa um Captive Portal utilizando um ESP32. O sistema foi desenvolvido com intuito educacional, permitindo que dispositivos conectados à rede Wi-Fi do ESP32 sejam redirecionados para uma página específica ao tentar acessar a internet.
+Este projeto implementa um captive portal em um ESP32 usando um ponto de acesso Wi-Fi falso, redirecionando os usuários para uma página de login. Além disso, o sistema armazena os dados submetidos pelos usuários.
 
-## Funcionalidade
-- Cria um ponto de acesso Wi-Fi.
-- Captura requisições HTTP e redireciona para uma página específica.
-- Armazena informações dos dispositivos conectados.
-- Gerencia arquivos relacionados ao sistema.
+## 📌 Funcionalidades
 
-## Dependências
-Para compilar e executar este projeto, é necessário instalar as seguintes bibliotecas:
+- Criação de um ponto de acesso Wi-Fi com um nome personalizado.
+- Redirecionamento de requisições para um servidor web local.
+- Armazenamento de credenciais enviadas pelos usuários.
+- Gerenciamento de arquivos usando SPIFFS.
 
-- **WiFiMulti** - Gerencia conexões Wi-Fi.
-- **DNSServer** - Manipula requisições DNS para o captive portal.
-- **WebServer** - Fornece funcionalidades de servidor web para manipular requisições HTTP.
-- **SPIFFS** - Permite armazenamento e gerenciamento de arquivos no ESP32.
+## 🛠️ Tecnologias Utilizadas
 
-Caso esteja utilizando o **Arduino IDE**, as bibliotecas podem ser instaladas via "Gerenciador de Bibliotecas".
-Se estiver utilizando **PlatformIO**, adicione ao `platformio.ini`:
+- **C++** para programação do ESP32.
+- **Arduino Framework** para desenvolvimento no ESP32.
+- **DNSServer** para redirecionamento de tráfego.
+- **WebServer** para hospedagem da página de login falsa.
+- **SPIFFS** para armazenamento de dados.
+- **ArduinoJson** para manipulação de JSON.
 
-```
-lib_deps =
-    WiFiMulti
-    DNSServer
-    WebServer
-    SPIFFS
-```
+## 📂 Estrutura do Código
 
-## Como Usar
-1. **Configurar o ESP32:**
-   - Compile e carregue o código no ESP32 usando a IDE de sua escolha.
-   - Conecte-se ao ponto de acesso gerado pelo ESP32.
-   
-2. **Acessar o Captive Portal:**
-   - Assim que um dispositivo se conectar, ao tentar abrir qualquer site, ele será redirecionado para a página configurada no sistema.
+- `main.cpp`: Configuração do ESP32, criação do ponto de acesso e servidor web.
+- `Victims.cpp`: Gerenciamento dos dados das vítimas, incluindo leitura e escrita de credenciais.
+- `Arquivomaneger.cpp`: Manipulação de arquivos usando SPIFFS.
+- `data/`: Contém os arquivos estáticos usados pelo servidor web, incluindo:
+  - `index.html`: Página de login falsa exibida para os usuários.
+  - `pass.html`: Página de inserção de credenciais.
+  - `validando.html`: Página de carregamento ou processamento.
+  - `style.css`: Estilos CSS aplicados às páginas.
+  - `script.js`: Scripts JavaScript para interação com a página.
+  - `google-icon.svg`: Ícone usado na interface.
 
-3. **Gerenciar Dispositivos:**
-   - O código inclui funcionalidades para armazenar informações dos dispositivos conectados.
+## 🚀 Como Usar
 
-## CRÉDITOS
-Este projeto tem fins educacionais. Sinta-se à vontade para modificar e aprimorar o código!
+1. **Configurar o ambiente:**
+   - Instale o [PlatformIO](https://platformio.org/) ou use o Arduino IDE com as bibliotecas adequadas.
+   - Conecte o ESP32 ao computador.
 
-## Licença
-Este projeto está sob a licença MIT.
+2. **Compilar e carregar o código:**
+   - Use o PlatformIO ou o Arduino IDE para compilar e enviar o firmware para o ESP32.
+   - Faça o upload dos arquivos da pasta `data/` para o sistema SPIFFS do ESP32.
+
+3. **Acessar o Captive Portal:**
+   - Conecte-se ao Wi-Fi criado pelo ESP32.
+   - Acesse qualquer site para ser redirecionado à página de login.
+
+## ⚠️ Aviso
+
+Este projeto é apenas para fins educacionais. O uso indevido para capturar credenciais de usuários sem consentimento pode ser ilegal e antiético. Use com responsabilidade!
+
+## 📜 Licença
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
 
