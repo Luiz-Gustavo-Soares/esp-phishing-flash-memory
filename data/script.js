@@ -17,3 +17,27 @@ function getBizonhos(){
     })
     .catch(error => console.error("Impossivel obter bizonhos!", error));
 }
+ 
+
+function postBizonhos(){
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+
+    let jsonData = {
+        username: user,
+        password: pass, 
+    }
+
+    fetch("/post", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(jsonData)
+    })
+    .then(data => {
+        console.log(data);
+        window.location.href = "/validando"
+    })
+
+}

