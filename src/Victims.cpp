@@ -34,6 +34,11 @@ public:
         arquivo->clearFile();
     }
 
+    String getJsonText(){
+        String out;
+        serializeJson(doc, out);
+        return out;
+    }
 
     String returnFullTextFormatted(){
         string text = "";
