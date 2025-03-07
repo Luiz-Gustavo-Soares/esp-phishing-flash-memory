@@ -25,6 +25,45 @@ p {
     color: #5f6368;
 }
 
+ol {
+    list-style-type: none;
+    padding: 0px;
+    margin: 10px;
+}
+
+li {
+    margin: 10px 0px;
+}
+
+li > div p {
+    text-align: start;
+    margin-left: 10px;
+    color: #202124;
+}
+
+.item-lista-victim{
+    box-shadow: -5px 4px 1px 0px #1a73e8;
+    border-radius: 4px;
+    background-color: #dadce0;
+    padding: 6px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.copy-button {
+    width: auto;
+    padding: 6px 8px;
+    margin-right: 10px;
+
+    background: #1a73e8;
+    color: white;
+    cursor: pointer;
+}
+
 .container {
     max-width: 400px;
     margin: 5% auto;
@@ -51,7 +90,7 @@ input:focus, button:focus {
     box-shadow: 0 1px 3px rgba(26, 115, 232, 0.2);
 }
 
-button {
+form > button {
     background: #1a73e8;
     color: white;
     cursor: pointer;
