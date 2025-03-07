@@ -54,13 +54,26 @@ li > div p {
     align-items: flex-start;
 }
 
+button.clear-victims {
+    margin-top: 50px;
+    cursor: pointer;
+    background-color: #c20404;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+button.clear-victims:focus {
+    background-color: #920202;
+    border-color: #c20404;
+}
+
 .copy-button {
     width: auto;
     padding: 6px 8px;
     margin-right: 10px;
 
     background: #1a73e8;
-    color: white;
+    color: #ffffff;
     cursor: pointer;
 }
 
@@ -75,7 +88,6 @@ li > div p {
 
 
 input, button {
-    width: 100%;
     padding: 12px 15px;
     margin: 10px 0;
     box-sizing: border-box;
@@ -88,9 +100,11 @@ input, button {
 input:focus, button:focus {
     border-color: #1a73e8;
     box-shadow: 0 1px 3px rgba(26, 115, 232, 0.2);
+    background: #1765cc;
 }
 
 form > button {
+    width: 100%;
     background: #1a73e8;
     color: white;
     cursor: pointer;
@@ -103,9 +117,6 @@ form > button {
     justify-content: center;
 }
 
-button:focus {
-    background: #1765cc;
-}
 
 .username-label, .password-label {
     color: #202124;

