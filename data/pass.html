@@ -13,7 +13,17 @@
     </header>
     <main>
         <div class="container">
-            <h1>Victims</h1>
+            <h2>Memory Usage</h2>
+
+            <label for="spiffs-usage">SPIFFS usage: </label>
+            <meter id="spiffs-usage" value="0" min="0" max="100"></meter>
+
+            <p>Total: <strong id="total">0</strong> bytes</p>
+            <p>Usada: <strong id="usado">0</strong> bytes</p>
+            <p>Livre: <strong id="livre">0</strong> bytes</p>
+        </div>
+        <div class="container">
+            <h2>Victims <strong id="qnt-victims">0</strong></h2>
             
             <ol id="bizonhos">
             </ol>
@@ -27,6 +37,11 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>window.onload = function() { getBizonhos(); };</script>
+    <script>
+    window.onload = function() { 
+        getBizonhos(); 
+        getMemory();
+    };
+    </script>
 </body>
 </html>

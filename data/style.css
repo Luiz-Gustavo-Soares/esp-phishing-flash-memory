@@ -20,6 +20,19 @@ h1 {
     font-weight: normal;
 }
 
+h2 {
+    font-size: 1.5rem;
+    color: #202124;
+    font-weight: normal;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+}
+
 p {
     font-size: 1rem;
     color: #5f6368;
@@ -79,6 +92,7 @@ button.clear-victims:focus {
 
 .container {
     max-width: 400px;
+    width: 100%;
     margin: 5% auto;
     padding: 2rem;
     background-color: #ffffff;
@@ -100,7 +114,7 @@ input, button {
 input:focus, button:focus {
     border-color: #1a73e8;
     box-shadow: 0 1px 3px rgba(26, 115, 232, 0.2);
-    background: #1765cc;
+    /* background: #1765cc; */
 }
 
 form > button {
@@ -132,4 +146,13 @@ button img {
 
 .container > img {
     max-width: 100px;
+}
+
+
+meter {
+    height: 40px;
+    max-width: 200px;
+    width: 90%;
+    border-radius: 50px;
+    color: #1a73e8;
 }
